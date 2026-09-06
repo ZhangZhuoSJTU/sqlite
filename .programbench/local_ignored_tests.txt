@@ -1,0 +1,28 @@
+# Course-side exclusions: tests that are environment-sensitive outside the
+# benchmark containers. Format: <branch>/<classname>.<testname>
+
+# macOS builds sqlite3 with clang, so .version / compile-options / PRAGMA
+# compile_options report clang where the goldens expect gcc. Meta commands that
+# print the working directory show /private/tmp (macOS /tmp symlink). A few
+# shared-DB-fixture tests (altertab/pragma4) see cross-test state under xdist, and
+# an fts4 content-schema dump differs in whitespace. Core SQL engine passes.
+
+281d3b6a53d3/eval.tests.test_sqlite3.test_nofollow_option
+281d3b6a53d3/eval.tests.test_sqlite3.test_version_dot_command
+4ee128ddea8e/tests.test_advanced_meta.test_cd_changes_working_directory
+4ee128ddea8e/tests.test_advanced_meta.test_vfslist_includes_memdb
+4ee128ddea8e/tests.test_advanced_meta.test_vfslist_shows_available_vfs
+4ee128ddea8e/tests.test_cli_flags.test_init_file_continues_after_errors
+4ee128ddea8e/tests.test_extensions.test_stmt_virtual_table
+4ee128ddea8e/tests.test_harvest_altertab.test_altertab_t16_10
+4ee128ddea8e/tests.test_harvest_altertab.test_altertab_t1_4
+4ee128ddea8e/tests.test_harvest_altertab.test_altertab_t1_4_1
+4ee128ddea8e/tests.test_harvest_altertab.test_altertab_t29_2
+4ee128ddea8e/tests.test_harvest_fts4langid.test_fts4langid_t6_1@db_fts4langid
+4ee128ddea8e/tests.test_harvest_pragma4.test_pragma4_t6_2@db_pragma4
+4ee128ddea8e/tests.test_meta_commands.test_version_command_shows_versions
+4ee128ddea8e/tests.test_meta_commands2.test_cd_changes_working_directory
+4ee128ddea8e/tests.test_pragma.test_pragma_compile_options
+4ee128ddea8e/tests.test_shell_errors.test_load_nonexistent_library
+4ee128ddea8e/tests.test_shell_lint.test_cd_change_directory
+4ee128ddea8e/tests.test_shell_lint.test_vfslist_shows_available_vfs
