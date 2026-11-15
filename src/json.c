@@ -552,6 +552,7 @@ static void jsonStringInit(JsonString *p, sqlite3_context *pCtx){
 static void jsonStringReset(JsonString *p){
   if( !p->bStatic ) sqlite3RCStrUnref(p->zBuf);
   jsonStringZero(p);
+  p->eErr &= ~JSTRING_TOODEEP;
 }
 
 /* Report an out-of-memory (OOM) condition
